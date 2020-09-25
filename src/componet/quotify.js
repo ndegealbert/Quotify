@@ -7,20 +7,12 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      '& > *': {
-        margin: theme.spacing(1),
-        width: theme.spacing(16),
-        height: theme.spacing(16),
-      },
+         width:"85%",
+         marginLeft:'10%'
+    
     },
   }));
-  
-
-
 export default  function  Quotify(){
-
     const classes = useStyles();
     const [searchTerm,SetTerm] =  useState("")
     let quoteList= []
@@ -41,8 +33,7 @@ getQuoteList()
             console.log("Run")
             SetQuoteList([...quoteList])
         }  
-        return () => {
-            
+        return () => {     
            // cleanup
         }
     }, [searchTerm])
@@ -68,26 +59,28 @@ function Filter(event){
 }
 //console.log(searchTerm) //Used for testing when  developing
 //console.log(quoteLists)
-return <Grid container >
+return <div className={classes.root}>
+<Grid container spacing={3} >
         <Grid item xs={12} spacing={2}>
-            <h1>Quotify</h1>
+        <h1>Quotify</h1>
         <p>Quotify is a small website made by Albert for you to find quotes from well known individuals around the world.</p>
          <form>
             <input type="text"  onChange={Filter} placeholder="filter using author name"/>
         </form>
         </Grid>
-        <Grid container >
-        <Grid item xs={12} >
-        {
-        quoteLists.map(q=>(
-            <div>
-            <p>{q.quote}</p>
-            <h1> {q.author} </h1>
-            </div>
-           
-        ))}      
-        </Grid>
+        <Grid container spacing={3} >
+            {
+              quoteLists.map(q =>(
+                <Grid item xs={12} md={3}>
+                <Paper>
+                <p>{q.quote}</p>
+                <h>{q.author}</h>
+                </Paper>
+                </Grid>
+              ))
+            }      
     </Grid>
 
     </Grid>
+    </div>
  }
