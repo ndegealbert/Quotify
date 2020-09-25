@@ -1,10 +1,10 @@
-import  React,{useState}  from  'react'
+import  React,{useState,useEffect} from  'react'
 import  quote  from  "./../json/quote.json"
 import  author  from  "./../json/authors.json"
 
 export default  function  Quotify(){
     const [searchTerm,SetTerm] =  useState("")
-    const [quoteLists,SetQuoteList] =  useState([])
+ 
     let quoteList= []
     //get QuoteList
     function getQuoteList(){
@@ -15,8 +15,23 @@ export default  function  Quotify(){
                 author:author[quote[i].authorIndex].name
                 })     
             }
-        } 
+        }
 
+getQuoteList()      
+    const [quoteLists,SetQuoteList] =  useState([...quoteList])
+    useEffect(() => {
+        if(quoteLists.length===0) {
+            console.log("Run")
+            SetQuoteList([...quoteList])
+        }
+          
+        
+        return () => {
+            
+           // cleanup
+        }
+    }, [searchTerm])
+  
     //setTheArray([...theArray, newElement]);
    // setNames(names => [...names, newName])
 
@@ -25,71 +40,53 @@ export default  function  Quotify(){
 function Filter(event){
         event.preventDefault()
         SetTerm(event.target.value)
-        SetQuoteList([...quoteLists,quoteList])
-        //Trim Search  Tearm  
-        const name = quoteLists.filter( quote=>{
-           
-            return quote.name == 'Albert'
-            /**for (let i = 0; i <searchTerm.length; i++) {
-            
-                return quote.author==quote.author.toLowerCase().includes(searchTerm[i].toLowerCase())
-              }*/
-              
-         })
-         console.log(name)
+        const text =searchTerm.toLowerCase().trim().split(" ")
+        console.log(text)
+        for(let i=0;i<text.length;i++){
+            console.log(text)
+        }
+           let update = quoteLists.filter(quote =>{
+            for (let i = 0; i < text.length; i++) {
+            return quote.author.toLowerCase().includes(text[i])
 
-   
+            }
+       
+            
+                        
+                 
+                
+        })
+            SetQuoteList([...update])
+    
         
+        
+
+        
+         
 }
 
 
-const data = [
-    {
-        name:"Albert",
-        city:"Dubai"
-    },
-    {
-        name:"John",
-        city:"Dubai"
-    },
-    {
-        name:"James",
-        city:"Dubai"
-    },
-    {
-        name:"Albert",
-        city:"Nairobi"
-    },
-    {
-        name:"Albert",
-        city:"Mombasa"
-    },
-    {
-        name:"Albert",
-        city:"Kisumu"
-    }
-]
-
-console.log(author)
-const  test = author .filter(n =>{
-    return  n.nationality == "Indian"
-})
 
 
-console.log(test)
+    // let test = quoteLists.filter(quote =>{
+    //     return quote.author.includes('M')
+    // })
+    // console.log(test)        
+
+
 
 console.log(searchTerm)
-console.log(quoteLists)
-getQuoteList()
 
+console.log(quoteLists)
+//console.log(quoteList)
 return <div>
     <form>
-    <input type="text" onChange={Filter} placeholder="filter using author name"/>
+    <input type="text"  onChange={Filter} placeholder="filter using author name"/>
 
     </form>
           
     {
-        quoteList.map(q=>(
+        quoteLists.map(q=>(
             <div>
             <p>{q.quote}</p>
             <h1> {q.author} </h1>

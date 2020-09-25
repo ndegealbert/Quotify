@@ -3,8 +3,8 @@ import Quotify  from  './componet/quotify'
 
 function App() {
   return (
-    <div className="App">
-      <Quotify />
+    <div className="App"> 
+      <Quotify/>
     </div>
   );
 }
