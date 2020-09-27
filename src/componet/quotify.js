@@ -8,11 +8,13 @@ import styles from  './quotify.module.css'
 const useStyles = makeStyles((theme) => ({
     root: {
          width:"85%",
-         marginLeft:'10%'
+         marginLeft:'10%',
+    
+         
     },
     root2:{
-        flex:1,
-        position:'relative'
+        position:'relative',
+        marginTop:theme.spacing(0)
         
 
     },
@@ -21,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
         borderRadius:'10px', 
         flex:1,
         position:'relative',    
+        top:"0px",
     },    
     quote:{
         padding:"15px",
         lineHeight:1.6,
     },
-    autho:{
-        padding:"15px",
-        marginLeft:'20px',
+    author:{
+        marginLeft:'5px',
         marginBottom:'30px',
 
     },
@@ -83,19 +85,19 @@ function Filter(event){
 return <div className={classes.root}>
 <Grid container spacing={3} >
         <Grid item xs={12} spacing={2}>
-        <h1>Quotify</h1>
+        <h1 className={styles.header}>Quotify</h1>
         <p>Quotify is a small website made by Albert for you to find quotes from well known individuals around the world.</p>
          <form>
             <input   className={styles.input} type="text"  onChange={Filter} placeholder="Filter using author name"/>
         </form>
         </Grid>
-        <Grid className={classes.root2} container spacing={1} >
+        <Grid container spacing={1} >
             {
               quoteLists.map(q =>(
-                <Grid item xs={12} md={3} sm={4}>
+                <Grid className={classes.root2}  item xs={12} md={3} sm={4}>
                 <Paper className={classes.paper}>
                 <p className={classes.quote}>{q.quote}</p>
-                <h4>{q.author}</h4>
+                <h4 className={classes.author}>{q.author}</h4>
                 </Paper>
                 </Grid>
               ))
