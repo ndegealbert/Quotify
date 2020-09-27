@@ -20,14 +20,14 @@ const useStyles = makeStyles((theme) => ({
     },
     paper:{
         border:'2px solid rgb(194, 165, 0)',
-        borderRadius:'10px', 
+        borderRadius:'15px', 
         flex:1,
         position:'relative',    
         top:"0px",
     },    
     quote:{
-        padding:"15px",
-        lineHeight:1.6,
+        padding:"10px",
+        lineHeight:1.7,
     },
     author:{
         marginLeft:'5px',
