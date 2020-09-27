@@ -4,16 +4,23 @@ import  author  from  "./../json/authors.json"
 import  {Grid }  from  '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-
+import styles from  './quotify.module.css'
 const useStyles = makeStyles((theme) => ({
     root: {
          width:"85%",
          marginLeft:'10%'
     },
-    paper:{
-        borderRadius:'4px',  
-        border:'3px',
+    root2:{
+        flex:1,
+        position:'relative'
+        
 
+    },
+    paper:{
+        border:'2px solid rgb(194, 165, 0)',
+        borderRadius:'10px', 
+        flex:1,
+        position:'relative',    
     },    
     quote:{
         padding:"15px",
@@ -79,10 +86,10 @@ return <div className={classes.root}>
         <h1>Quotify</h1>
         <p>Quotify is a small website made by Albert for you to find quotes from well known individuals around the world.</p>
          <form>
-            <input type="text"  onChange={Filter} placeholder="filter using author name"/>
+            <input   className={styles.input} type="text"  onChange={Filter} placeholder="Filter using author name"/>
         </form>
         </Grid>
-        <Grid container spacing={3} >
+        <Grid className={classes.root2} container spacing={1} >
             {
               quoteLists.map(q =>(
                 <Grid item xs={12} md={3} sm={4}>
@@ -92,8 +99,7 @@ return <div className={classes.root}>
                 </Paper>
                 </Grid>
               ))
-            }      
-    </Grid>
+            } </Grid>
 
     </Grid>
     </div>
