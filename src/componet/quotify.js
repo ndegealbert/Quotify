@@ -9,7 +9,21 @@ const useStyles = makeStyles((theme) => ({
     root: {
          width:"85%",
          marginLeft:'10%'
-    
+    },
+    paper:{
+        borderRadius:'4px',  
+        border:'3px',
+
+    },    
+    quote:{
+        padding:"15px",
+        lineHeight:1.6,
+    },
+    autho:{
+        padding:"15px",
+        marginLeft:'20px',
+        marginBottom:'30px',
+
     },
   }));
 export default  function  Quotify(){
@@ -71,10 +85,10 @@ return <div className={classes.root}>
         <Grid container spacing={3} >
             {
               quoteLists.map(q =>(
-                <Grid item xs={12} md={3}>
-                <Paper>
-                <p>{q.quote}</p>
-                <h>{q.author}</h>
+                <Grid item xs={12} md={3} sm={4}>
+                <Paper className={classes.paper}>
+                <p className={classes.quote}>{q.quote}</p>
+                <h4>{q.author}</h4>
                 </Paper>
                 </Grid>
               ))
