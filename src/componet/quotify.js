@@ -86,7 +86,7 @@ return <div className={classes.root}>
 <Grid container spacing={3} >
         <Grid item xs={12} spacing={2}>
         <h1 className={styles.header}>Quotify</h1>
-        <p>Quotify is a small website made by Albert for you to find quotes from well known individuals around the world.</p>
+        <p>Quotify is a small website made by <span style={{color:'green'}} >  Albert </span>  for you to find quotes from well known individuals around the world.</p>
          <form>
             <input   className={styles.input} type="text"  onChange={Filter} placeholder="Filter using author name"/>
         </form>
