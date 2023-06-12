@@ -12,4 +12,5 @@ function myFunction() {
 
 function openModal(){
  document.getElementById('id01').style.display='block'" class="w3-button w3-black"     
+ console.log("Hello");
 }
