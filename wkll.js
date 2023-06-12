@@ -11,6 +11,6 @@ function myFunction() {
 
 
 function openModal(){
- document.getElementById('id01').style.display='block class="w3-button w3-black"'  
+ let elem = document.getElementById('id01').style.display='block'" 
  console.log("Hello");
 }
