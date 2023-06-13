@@ -9,4 +9,4 @@ It is based on React.
 
 
 
-![Screenshot from 2023-06-13 13-31-35](https://github.com/ndegealbert/Quotify/assets/35229852/c4049708-2355-4862-b53f-9f66b364c525)
+
